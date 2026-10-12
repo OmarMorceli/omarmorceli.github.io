@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omar Morceli · IoT & Embedded Systems Engineer</title>
+<meta name="description" content="IoT and embedded systems engineer. Nine years building connected products end to end. Co-founder and technical lead of Adsum IoT Coder.">
+<meta property="og:title" content="Omar Morceli · IoT & Embedded Systems Engineer">
+<meta property="og:description" content="Nine years building connected products end to end: sensor firmware, connectivity, gateways, cloud. Co-founder and technical lead of Adsum IoT Coder.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Ccircle cx='44' cy='16' r='6' fill='%23E07A1F'/%3E%3Cpath d='M24 16a20 20 0 0 0 20 20' fill='none' stroke='%23E07A1F' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M8 16a36 36 0 0 0 36 36' fill='none' stroke='%23E07A1F' stroke-width='6' stroke-linecap='round' opacity='.5'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #F7F8FB; --panel: #FFFFFF; --ink: #101A33; --body: #3A4556; --muted: #6B7483; --line: #E1E6EE;
+    --accent: #D46A0B; --accent2: #2F6FB0; --glow: rgba(224,122,31,.16);
+    --net-line: 47,111,176; --net-dot: 16,26,51; --net-pulse: 224,122,31;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #080D1A; --panel: #101829; --ink: #F2F4F8; --body: #C2C9D6; --muted: #8791A3; --line: #1F2A40;
+      --accent: #F2994A; --accent2: #5CB6FF; --glow: rgba(242,153,74,.14);
+      --net-line: 92,182,255; --net-dot: 160,190,230; --net-pulse: 242,153,74;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #080D1A; --panel: #101829; --ink: #F2F4F8; --body: #C2C9D6; --muted: #8791A3; --line: #1F2A40;
+    --accent: #F2994A; --accent2: #5CB6FF; --glow: rgba(242,153,74,.14);
+    --net-line: 92,182,255; --net-dot: 160,190,230; --net-pulse: 242,153,74;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0 }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px }
+  body { background: var(--bg); color: var(--body); font: 16px/1.62 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden }
+  a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px }
+  a:hover { color: var(--accent); text-decoration-color: var(--accent) }
+  #net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none }
+  .wrap { position: relative; z-index: 1; max-width: 1060px; margin: 0 auto; padding: 0 24px }
+
+  /* theme button */
+  .theme { position: fixed; top: 14px; right: 16px; z-index: 5; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; font-size: 16px; line-height: 1 }
+  .theme:hover { border-color: var(--accent); color: var(--accent) }
+
+  /* hero */
+  .hero { padding: 84px 0 30px; position: relative }
+  .hero:before { content: ""; position: absolute; left: -140px; top: -60px; width: 620px; height: 420px; background: radial-gradient(closest-side, var(--glow), transparent); z-index: -1 }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--muted); border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 4px 12px 4px 10px }
+  .eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: ping 2.2s infinite }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(242,153,74,.55) } 80%, 100% { box-shadow: 0 0 0 10px rgba(242,153,74,0) } }
+  h1 { color: var(--ink); font-size: clamp(38px, 6.4vw, 64px); line-height: 1.04; letter-spacing: -1.4px; font-weight: 750; margin-top: 18px }
+  h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent }
+  .role { color: var(--ink); font-size: clamp(17px, 2.2vw, 21px); font-weight: 600; margin-top: 14px }
+  .intro { margin-top: 16px; font-size: 18px; max-width: 660px }
+  .links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px }
+  .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 17px; border: 1px solid var(--line); border-radius: 999px; font-size: 14.5px; font-weight: 600; color: var(--ink); text-decoration: none; background: var(--panel); transition: transform .15s, border-color .15s, color .15s }
+  .btn:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent) }
+  .btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff }
+
+  /* sensor-to-AI strip */
+  .pipe { position: relative; margin: 46px 0 6px; display: flex; justify-content: space-between; max-width: 760px }
+  .pipe:before { content: ""; position: absolute; left: 14px; right: 14px; top: 13px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: .45 }
+  .pipe b { position: absolute; top: 9px; left: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px 3px var(--accent); animation: travel 5s linear infinite }
+  .pipe b + b { animation-delay: -2.5s }
+  @keyframes travel { from { left: 14px; opacity: 0 } 6% { opacity: 1 } 94% { opacity: 1 } to { left: calc(100% - 24px); opacity: 0 } }
+  .pipe div { position: relative; display: flex; flex-direction: column; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: .2px }
+  .pipe div:before { content: ""; width: 28px; height: 28px; border-radius: 50%; background: var(--panel); border: 2px solid var(--accent2); box-shadow: 0 0 0 5px var(--bg) }
+  .pipe div:last-child:before { border-color: var(--accent) }
+  .pipe-cap { font-size: 13px; color: var(--muted); margin-top: 12px }
+
+  /* summary cards */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 34px 0 10px }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 15px; text-decoration: none; transition: transform .18s, border-color .18s, box-shadow .18s; display: block }
+  .stat:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 14px 34px -18px var(--accent); color: inherit }
+  .stat strong { display: block; color: var(--ink); font-size: 26px; line-height: 1.1; font-weight: 750; letter-spacing: -.5px }
+  .stat span { display: block; font-size: 13.5px; color: var(--muted); margin-top: 6px; line-height: 1.4 }
+
+  /* layout with side nav */
+  .grid { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 46px; margin-top: 34px }
+  nav.side { position: sticky; top: 90px; align-self: start; font-size: 13.5px; font-weight: 600 }
+  nav.side a { display: flex; align-items: center; gap: 10px; padding: 7px 0; color: var(--muted); text-decoration: none; letter-spacing: .3px }
+  nav.side a:before { content: ""; width: 18px; height: 2px; background: var(--line); transition: width .2s, background .2s }
+  nav.side a:hover, nav.side a.on { color: var(--ink) }
+  nav.side a.on:before { width: 38px; background: var(--accent) }
+  nav.top { display: none }
+
+  section { padding: 0 0 54px }
+  h2 { color: var(--accent); font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 12px }
+  h2:after { content: ""; flex: 1; height: 1px; background: var(--line) }
+  h3 { color: var(--ink); font-size: 19px; font-weight: 700; line-height: 1.3 }
+  .meta { color: var(--muted); font-size: 14px; margin-top: 3px }
+  p + p { margin-top: 10px }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; margin-top: 12px; position: relative; overflow: hidden; transition: transform .18s, border-color .18s, box-shadow .18s }
+  .card:before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--accent), var(--accent2)); opacity: 0; transition: opacity .18s }
+  .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: 0 18px 40px -26px var(--accent2) }
+  .card:hover:before { opacity: 1 }
+  .card p { margin-top: 8px }
+  .feature { padding: 26px 26px 24px; border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, var(--panel)), var(--panel) 55%) }
+  .feature h3 { font-size: 26px; letter-spacing: -.3px }
+  .feature ul { margin: 12px 0 0 18px }
+  .feature li { margin-top: 6px }
+  .feature li::marker { color: var(--accent) }
+  .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px }
+  .tags span { font-size: 12.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 7px; padding: 1px 9px; background: var(--bg) }
+
+  .tl { border-left: 2px solid var(--line); margin-left: 6px; padding-left: 22px }
+  .tl div { position: relative; padding: 0 0 18px }
+  .tl div:before { content: ""; position: absolute; left: -29px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent2) }
+  .tl div:first-child:before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px var(--glow) }
+  .tl small { display: block; color: var(--muted); font-size: 13px }
+  .tl b { color: var(--ink); font-weight: 650 }
+
+  .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px }
+  .skills .card { margin-top: 0; padding: 16px 18px }
+  .skills h3 { font-size: 15.5px }
+
+  footer { border-top: 1px solid var(--line); padding: 44px 0 70px; text-align: center; color: var(--muted); font-size: 14.5px }
+  footer .big { color: var(--ink); font-size: clamp(24px, 4vw, 34px); font-weight: 750; letter-spacing: -.6px; margin-bottom: 8px }
+  footer .links { justify-content: center }
+
+  /* reveal on scroll */
+  .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease }
+  .rv.in { opacity: 1; transform: none }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; gap: 0 }
+    nav.side { display: none }
+    nav.top { display: flex; position: sticky; top: 0; z-index: 4; gap: 6px; overflow-x: auto; padding: 10px 24px; margin: 26px -24px 26px; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); scrollbar-width: none }
+    nav.top a { flex: none; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); text-decoration: none; color: var(--muted) }
+    nav.top a.on { color: var(--bg); background: var(--ink); border-color: var(--ink) }
+    .stats { grid-template-columns: repeat(2, 1fr) }
+    .hero { padding-top: 66px }
+  }
+  @media (max-width: 560px) {
+    .skills { grid-template-columns: 1fr }
+    .pipe div { font-size: 10.5px } .pipe div:before { width: 22px; height: 22px } .pipe:before { top: 10px } .pipe b { top: 6px }
+    .feature { padding: 20px 18px } .card { padding: 18px 16px }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rv { opacity: 1; transform: none; transition: none } .pipe b, .eyebrow i { animation: none } html { scroll-behavior: auto }
+  }
+</style>
+</head>
+<body>
+<canvas id="net" aria-hidden="true"></canvas>
+<button class="theme" id="theme" aria-label="Switch light or dark theme" title="Light / dark">◐</button>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow"><i></i>Building Adsum IoT Coder</div>
+  <h1>Omar Morceli<br><span>Connected devices, end to end.</span></h1>
+  <div class="role">IoT &amp; Embedded Systems Engineer · Co-founder &amp; Technical Lead, Adsum Networks</div>
+  <p class="intro">I build connected products from the sensor firmware to the dashboard. Nine years with UK startups: smart parking sensors in city streets, industrial BLE tracking, and now an AI coding agent for IoT firmware. I also teach IoT engineering on real hardware.</p>
+  <div class="links">
+    <a class="btn primary" href="mailto:omar.morceli7@gmail.com">Email me</a>
+    <a class="btn" href="https://www.linkedin.com/in/omar-morceli">LinkedIn</a>
+    <a class="btn" href="https://github.com/OmarMorceli">GitHub</a>
+  </div>
+
+  <div class="pipe" aria-hidden="true">
+    <b></b><b></b>
+    <div>Sensor</div><div>Firmware</div><div>Radio</div><div>Gateway</div><div>Cloud</div><div>AI</div>
+  </div>
+  <p class="pipe-cap">The whole path of the data is my work: from the sensor to the cloud, and now AI on top.</p>
+
+  <div class="stats">
+    <a class="stat rv" href="#experience"><strong>9 years</strong><span>building connected products with UK startups</span></a>
+    <a class="stat rv" href="#work"><strong>UK · UAE</strong><span>sensors in live city streets, and a pilot in the UAE</span></a>
+    <a class="stat rv" href="#now"><strong>AI agent</strong><span>open source, for IoT firmware on real boards</span></a>
+    <a class="stat rv" href="#training"><strong>Trainer</strong><span>IoT engineering on real hardware</span></a>
+  </div>
+</header>
+
+<nav class="top" aria-label="Sections">
+  <a href="#now">Now</a><a href="#work">Work</a><a href="#training">Training</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+</nav>
+
+<div class="grid">
+<nav class="side" aria-label="Sections">
+  <a href="#now">Now</a><a href="#work">Selected work</a><a href="#training">Training</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+</nav>
+
+<main>
+<section id="now">
+  <h2>Now</h2>
+  <div class="card feature rv">
+    <h3>Adsum IoT Coder</h3>
+    <div class="meta">Co-founder &amp; Technical Lead · 2026 to present · open source, Apache-2.0</div>
+    <p style="margin-top:12px">An AI coding agent for IoT firmware. It designs, writes, builds, flashes and debugs firmware on real boards. Coding agents usually read source code only. The hardest IoT bugs are in what the devices do at run time: timing between chips, protocol state, radio conditions.</p>
+    <ul>
+      <li>I build the <b>hardware-in-the-loop layer</b>: programming devices, capturing live logs from several chips at once, testing on real boards.</li>
+      <li>I built its <b>wireless debugging</b>: radio sniffer capture, HCI traces, cellular modem traces.</li>
+      <li>I write the embedded knowledge the agent works from, and I own the release gate.</li>
+      <li>We published <b>IoT-FirmwareDebugBench</b>, an open benchmark that runs on physical nRF52 hardware.</li>
+    </ul>
+    <div class="tags"><span>Nordic nRF52 / 53 / 54</span><span>ESP32 / S3 / C6</span><span>Zephyr</span><span>ESP-IDF</span><span>VS Code extension</span><span>MCP server</span></div>
+    <div class="links">
+      <a class="btn" href="https://github.com/adsumnetworks/Adsum-IoT-Coder">Source on GitHub</a>
+      <a class="btn" href="https://adsumcoder.ai">adsumcoder.ai</a>
+      <a class="btn" href="https://docs.adsumnetworks.com">Docs</a>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <h2>Selected work</h2>
+
+  <div class="card rv">
+    <h3>Smart parking sensors in city streets</h3>
+    <div class="meta">LiveCity Systems · 2017 to 2021 · UK streets, pilot in the UAE</div>
+    <p>Battery-powered magnetometer sensors installed in public roads. I wrote the sensor driver from the datasheet, recorded real cars to design the detection, and designed the system around power: units ran for about six years on one coin cell. Sealed sensors get new firmware without being opened: a magnet triggers a short update window, and a technician sends the firmware from a phone.</p>
+    <div class="tags"><span>nRF52, bare-metal C</span><span>BLE</span><span>Linux gateways</span><span>AWS IoT Core</span><span>ThingsBoard</span><span>TensorFlow</span></div>
+  </div>
+
+  <div class="card rv">
+    <h3>Making a Bluetooth Mesh network visible</h3>
+    <div class="meta">Adsum Networks · 2021 to 2024</div>
+    <p>Bluetooth Mesh gives the operator no view of the network. I built a thin layer on Zephyr's mesh stack: a controller node maps the live network (hops and signal strength per link) and sends configuration to one node or to all of them. A dashboard draws the mesh.</p>
+    <div class="tags"><span>Zephyr</span><span>Bluetooth Mesh</span><span>nRF52</span></div>
+  </div>
+
+  <div class="card rv">
+    <h3>BLE asset tracking and gateways</h3>
+    <div class="meta">Adsum Networks · 2021 to 2024</div>
+    <p>A tracking system for warehouses and industrial sites: gateway firmware, a BLE protocol designed for many tags in one place, and ThingsBoard dashboards with alerts. BLE-to-Wi-Fi gateways on ESP32 and nRF52 with an on-device web page for setup. Built and tested at small scale.</p>
+    <div class="tags"><span>BLE</span><span>ESP32</span><span>nRF52</span><span>MQTT</span><span>ThingsBoard</span></div>
+  </div>
+
+  <div class="card rv">
+    <h3>On-premise AI for factory data</h3>
+    <div class="meta">Freelance · 2024 to 2026 · US telecom programme, through a UK partner</div>
+    <p>The data could not leave the site. I deployed model serving on on-premise NVIDIA GPU servers with Docker and Kubernetes, built the retrieval backend for a chatbot that answers questions over live factory telemetry, and benchmarked serving options for speed and cost.</p>
+    <div class="tags"><span>NVIDIA NIM</span><span>Kubernetes</span><span>RAG</span><span>Milvus</span></div>
+  </div>
+
+  <div class="card rv">
+    <h3>Robot arm with vision-based control</h3>
+    <div class="meta">M.Sc. thesis · Blida University · 2017</div>
+    <p>I rebuilt an old, undocumented 3-axis arm, measured its dynamics, modelled it, and added a camera so it could find and pick up a ball. Captain of a team with three podiums in a row at Eurobot Algeria, the national robotics competition.</p>
+    <div class="tags"><span>Control</span><span>System identification</span><span>Camera calibration</span><span>MATLAB / Simulink</span></div>
+  </div>
+</section>
+
+<section id="training">
+  <h2>Training</h2>
+  <div class="card rv">
+    <h3>IoT engineering, taught on real hardware</h3>
+    <div class="meta">Instructor at Almikatro · 2026 to present · live online</div>
+    <p>I design and teach a professional IoT course on ESP32: system architecture, firmware, sensors (I2C, SPI, UART), Wi-Fi and TCP/IP, MQTT, HTTP APIs, ThingsBoard, dashboards, alerts and remote control. Each student finishes with a working device-to-cloud system. A LoRa module is in preparation.</p>
+    <p>I also give training and technical advice to companies and startups that build connected products.</p>
+    <div class="links"><a class="btn" href="https://almikatro.com">Course page at Almikatro</a></div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="tl rv">
+    <div><small>2026 to present</small><b>Co-founder &amp; Technical Lead</b>, Adsum Networks (Adsum IoT Coder)</div>
+    <div><small>2026 to present</small><b>IoT Engineering Instructor</b>, Almikatro, part-time</div>
+    <div><small>2024 to 2026</small><b>Freelance AI &amp; IoT Engineer</b>, industrial telemetry</div>
+    <div><small>2021 to 2024</small><b>Senior IoT &amp; Embedded Systems Engineer</b>, Adsum Networks, founding team</div>
+    <div><small>2017 to 2021</small><b>Embedded Systems &amp; IoT Engineer</b>, LiveCity Systems, founding team</div>
+    <div><small>2015 to 2017</small><b>M.Sc. Robotics and Vision Systems</b>, Blida University</div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="card rv"><h3>Firmware</h3><p>C, C++, Zephyr, nRF Connect SDK, ESP-IDF, FreeRTOS, ARM Cortex-M, low-power design, OTA updates</p></div>
+    <div class="card rv"><h3>Wireless</h3><p>BLE, Bluetooth Mesh, Wi-Fi, LoRa, NB-IoT and LTE-M, radio sniffer and HCI trace analysis</p></div>
+    <div class="card rv"><h3>Device to cloud</h3><p>MQTT over TLS, device certificates, AWS IoT Core, ThingsBoard, Node-RED, InfluxDB</p></div>
+    <div class="card rv"><h3>Gateways</h3><p>Python applications on Linux boards, packaging, systemd, remote updates</p></div>
+    <div class="card rv" style="grid-column:1/-1"><h3>AI</h3><p>Machine learning on sensor data (TensorFlow, Keras), on-premise GPU inference, retrieval systems (RAG)</p></div>
+  </div>
+</section>
+</main>
+</div>
+
+<footer id="contact">
+  <div class="big">Have a connected product to build, or a team to train?</div>
+  <p>Based in Algeria. Working remotely with UK teams since 2017.</p>
+  <div class="links">
+    <a class="btn primary" href="mailto:omar.morceli7@gmail.com">omar.morceli7@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/omar-morceli">LinkedIn</a>
+    <a class="btn" href="https://github.com/OmarMorceli">GitHub</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // theme button
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  document.getElementById('theme').onclick = function () {
+    var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    readColors();
+  };
+
+  // reveal on scroll
+  var rv = [].slice.call(document.querySelectorAll('.rv'));
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 60 + 'ms'; io.observe(el); });
+  } else rv.forEach(function (el) { el.classList.add('in'); });
+
+  // side / top navigation follows the scroll
+  var links = [].slice.call(document.querySelectorAll('nav a')), ids = ['now', 'work', 'training', 'experience', 'skills', 'contact'];
+  function mark(id) { links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + id); }); }
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) mark(e.target.id); }); }, { rootMargin: '-35% 0px -60% 0px' });
+    ids.forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
+  mark('now');
+
+  // background: a sensor network with data packets moving on the links
+  var cv = document.getElementById('net'), g = cv.getContext('2d'), W, H, nodes = [], pulses = [], col = {}, raf;
+  function readColors() { var s = getComputedStyle(root); col = { line: s.getPropertyValue('--net-line').trim(), dot: s.getPropertyValue('--net-dot').trim(), pulse: s.getPropertyValue('--net-pulse').trim() }; if (reduce) draw(); }
+  function size() {
+    var r = Math.min(window.devicePixelRatio || 1, 1.5);
+    W = innerWidth; H = innerHeight; cv.width = W * r; cv.height = H * r; g.setTransform(r, 0, 0, r, 0, 0);
+    var n = Math.max(22, Math.min(90, Math.round(W * H / 15000)));
+    nodes = []; for (var i = 0; i < n; i++) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22, r: Math.random() < .14 ? 2.6 : 1.5 });
+    pulses = [];
+  }
+  var LINK = 165;
+  function draw() {
+    g.clearRect(0, 0, W, H);
+    var i, j, a, b, dx, dy, d, near = [];
+    for (i = 0; i < nodes.length; i++) {
+      a = nodes[i];
+      for (j = i + 1; j < nodes.length; j++) {
+        b = nodes[j]; dx = a.x - b.x; dy = a.y - b.y; d = Math.sqrt(dx * dx + dy * dy);
+        if (d < LINK) { g.strokeStyle = 'rgba(' + col.line + ',' + (0.24 * (1 - d / LINK)).toFixed(3) + ')'; g.lineWidth = 1; g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke(); near.push([a, b]); }
+      }
+    }
+    for (i = 0; i < nodes.length; i++) { a = nodes[i]; g.fillStyle = 'rgba(' + col.dot + ',' + (a.r > 2 ? .5 : .28) + ')'; g.beginPath(); g.arc(a.x, a.y, a.r, 0, 6.283); g.fill(); }
+    if (!reduce && near.length && pulses.length < 7 && Math.random() < .05) { var l = near[(Math.random() * near.length) | 0]; pulses.push({ a: l[0], b: l[1], t: 0 }); }
+    for (i = pulses.length - 1; i >= 0; i--) {
+      var p = pulses[i]; p.t += .016;
+      if (p.t >= 1) { pulses.splice(i, 1); continue; }
+      var x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
+      g.fillStyle = 'rgba(' + col.pulse + ',.9)'; g.beginPath(); g.arc(x, y, 2.2, 0, 6.283); g.fill();
+      g.fillStyle = 'rgba(' + col.pulse + ',.16)'; g.beginPath(); g.arc(x, y, 6, 0, 6.283); g.fill();
+    }
+  }
+  function step() {
+    for (var i = 0; i < nodes.length; i++) { var a = nodes[i]; a.x += a.vx; a.y += a.vy; if (a.x < -20) a.x = W + 20; if (a.x > W + 20) a.x = -20; if (a.y < -20) a.y = H + 20; if (a.y > H + 20) a.y = -20; }
+    draw(); raf = requestAnimationFrame(step);
+  }
+  readColors(); size(); draw();
+  if (!reduce) { raf = requestAnimationFrame(step); document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden) raf = requestAnimationFrame(step); }); }
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); draw(); }, 150); });
+})();
+</script>
+</body>
+</html>
