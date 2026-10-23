@@ -121,6 +121,47 @@
   .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease }
   .rv.in { opacity: 1; transform: none }
 
+  /* training: roadmap tracks + request form */
+  .t-lead h3 { font-size: clamp(22px, 3vw, 28px); letter-spacing: -.4px }
+  .t-lead p { margin-top: 10px; font-size: 17px; max-width: 720px }
+  .t-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px }
+  .t-chips span { font-size: 13px; font-weight: 600; color: var(--ink); border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 4px 12px }
+  .t-chips span:before { content: "\25CF"; color: var(--accent); margin-right: 7px; font-size: 9px; vertical-align: 2px }
+  .track { margin-top: 18px; padding: 22px 22px 20px }
+  .track-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px }
+  .track-tag { flex: none; font-size: 11.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent2); border: 1px solid color-mix(in srgb, var(--accent2) 40%, var(--line)); border-radius: 999px; padding: 3px 10px }
+  .road { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 20px }
+  .road:before { content: ""; position: absolute; left: 22px; right: 22px; top: 21px; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent)); opacity: .45 }
+  .road b { position: absolute; top: 17px; left: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px 3px var(--accent); animation: travel 6s linear infinite }
+  .step { position: relative }
+  .step .lv { position: relative; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 750; font-size: 15px; color: var(--ink); background: var(--panel); border: 2px solid var(--accent2); box-shadow: 0 0 0 6px var(--panel) }
+  .step small { display: block; margin-top: 12px; font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted) }
+  .step h4 { color: var(--ink); font-size: 16.5px; line-height: 1.3; margin-top: 3px }
+  .step p { font-size: 14.5px; line-height: 1.55; margin: 6px 0 10px }
+  .step.ghost .lv { border-style: dashed; color: var(--accent) }
+  .step.ghost h4, .step.ghost p { opacity: .82 }
+  .st { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; border: 1px solid var(--line) }
+  .st.live { color: #fff; background: var(--accent2); border-color: var(--accent2) }
+  .st.soon { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)) }
+  .st.plan { color: var(--muted) }
+  .st.next { color: var(--muted); border-style: dashed }
+  .more { font-size: 13.5px; font-weight: 600; margin-left: 6px; text-decoration: none; color: var(--accent2) }
+  .t-sub { margin-top: 30px; font-size: 19px }
+  .formats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px }
+  .formats .card { margin-top: 12px; padding: 16px 18px }
+  .formats h4 { color: var(--ink); font-size: 15.5px }
+  .formats p { font-size: 14.5px; margin-top: 6px }
+  .t-note { margin-top: 16px; padding-left: 14px; border-left: 3px solid var(--accent); font-size: 15.5px; max-width: 760px }
+  .req { margin-top: 22px }
+  .req-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; margin-top: 16px }
+  .req-grid label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; font-weight: 600; color: var(--muted) }
+  .req-grid .full { grid-column: 1 / -1 }
+  .req-grid input, .req-grid select, .req-grid textarea { font: inherit; font-size: 15px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; width: 100% }
+  .req-grid input:focus, .req-grid select:focus, .req-grid textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent); border-color: var(--accent) }
+  .req-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 10px }
+  .req-btns button { cursor: pointer; font-family: inherit }
+  .req-btns small { color: var(--muted); font-size: 12.5px }
+
   @media (max-width: 900px) {
     .grid { grid-template-columns: 1fr; gap: 0 }
     nav.side { display: none }
@@ -130,13 +171,22 @@
     .stats { grid-template-columns: repeat(2, 1fr) }
     .hero { padding-top: 66px }
   }
+  @media (max-width: 720px) {
+    .road { grid-template-columns: 1fr; gap: 16px }
+    .road:before { left: 21px; right: auto; top: 22px; bottom: 22px; width: 2px; height: auto; background: linear-gradient(var(--accent2), var(--accent)) }
+    .road b { display: none }
+    .step { padding-left: 62px; min-height: 44px }
+    .step .lv { position: absolute; left: 0; top: 0 }
+    .step small { margin-top: 0 }
+    .formats, .req-grid { grid-template-columns: 1fr }
+  }
   @media (max-width: 560px) {
     .skills { grid-template-columns: 1fr }
     .pipe div { font-size: 10.5px } .pipe div:before { width: 22px; height: 22px } .pipe:before { top: 10px } .pipe b { top: 6px }
     .feature { padding: 20px 18px } .card { padding: 18px 16px }
   }
   @media (prefers-reduced-motion: reduce) {
-    .rv { opacity: 1; transform: none; transition: none } .pipe b, .eyebrow i { animation: none } html { scroll-behavior: auto }
+    .rv { opacity: 1; transform: none; transition: none } .pipe b, .road b, .eyebrow i { animation: none } html { scroll-behavior: auto }
   }
 </style>
 </head>
@@ -150,11 +200,12 @@
   <div class="eyebrow"><i></i>Building Adsum IoT Coder</div>
   <h1>Omar Morceli<br><span>Connected devices, end to end.</span></h1>
   <div class="role">IoT &amp; Embedded Systems Engineer · Co-founder &amp; Technical Lead, Adsum Networks</div>
-  <p class="intro">I build connected products from the sensor firmware to the dashboard. Nine years with UK startups: smart parking sensors in city streets, industrial BLE tracking, and now an AI coding agent for IoT firmware. I also teach IoT engineering on real hardware.</p>
+  <p class="intro">I build connected products from the sensor firmware to the dashboard. Nine years with UK startups: smart parking sensors in city streets, industrial BLE tracking, and now an AI coding agent for IoT firmware. I turn this field experience into professional training on IoT systems and edge AI.</p>
   <div class="links">
     <a class="btn primary" href="mailto:omar.morceli7@gmail.com">Email me</a>
     <a class="btn" href="https://www.linkedin.com/in/omar-morceli">LinkedIn</a>
     <a class="btn" href="https://github.com/OmarMorceli">GitHub</a>
+    <a class="btn" href="#training">Training programs →</a>
   </div>
 
   <div class="pipe" aria-hidden="true">
@@ -167,7 +218,7 @@
     <a class="stat rv" href="#experience"><strong>9 years</strong><span>building connected products with UK startups</span></a>
     <a class="stat rv" href="#work"><strong>UK · UAE</strong><span>sensors in live city streets, and a pilot in the UAE</span></a>
     <a class="stat rv" href="#now"><strong>AI agent</strong><span>open source, for IoT firmware on real boards</span></a>
-    <a class="stat rv" href="#training"><strong>Trainer</strong><span>IoT engineering on real hardware</span></a>
+    <a class="stat rv" href="#training"><strong>2 tracks</strong><span>professional training: IoT systems and edge AI</span></a>
   </div>
 </header>
 
@@ -187,16 +238,16 @@
     <h3>Adsum IoT Coder</h3>
     <div class="meta">Co-founder &amp; Technical Lead · 2026 to present · open source, Apache-2.0</div>
     <p style="margin-top:12px">An AI coding agent for IoT firmware. It designs, writes, builds, flashes and debugs firmware on real boards. Coding agents usually read source code only. The hardest IoT bugs are in what the devices do at run time: timing between chips, protocol state, radio conditions.</p>
+    <p style="margin-top:12px">Today Adsum ships NTN Relay firmware: Bluetooth LE device data carried over satellite and cellular, on Fanstel open hardware. The agent builds that firmware.</p>
     <ul>
       <li>I build the <b>hardware-in-the-loop layer</b>: programming devices, capturing live logs from several chips at once, testing on real boards.</li>
-      <li>I built its <b>wireless debugging</b>: radio sniffer capture, HCI traces, cellular modem traces.</li>
+      <li>I built its <b>wireless debugging</b> on real boards: Bluetooth and cellular traces.</li>
       <li>I write the embedded knowledge the agent works from, and I own the release gate.</li>
-      <li>We published <b>IoT-FirmwareDebugBench</b>, an open benchmark that runs on physical nRF52 hardware.</li>
     </ul>
-    <div class="tags"><span>Nordic nRF52 / 53 / 54</span><span>ESP32 / S3 / C6</span><span>Zephyr</span><span>ESP-IDF</span><span>VS Code extension</span><span>MCP server</span></div>
+    <div class="tags"><span>Nordic nRF52 / 53 / 54</span><span>ESP32 / S3 / C6</span><span>Zephyr</span><span>ESP-IDF</span><span>VS Code extension</span><span>MCP server</span><span>NB-NTN satellite</span></div>
     <div class="links">
       <a class="btn" href="https://github.com/adsumnetworks/Adsum-IoT-Coder">Source on GitHub</a>
-      <a class="btn" href="https://adsumcoder.ai">adsumcoder.ai</a>
+      <a class="btn" href="https://www.adsumnetworks.com">adsumnetworks.com</a>
       <a class="btn" href="https://docs.adsumnetworks.com">Docs</a>
     </div>
   </div>
@@ -208,7 +259,7 @@
   <div class="card rv">
     <h3>Smart parking sensors in city streets</h3>
     <div class="meta">LiveCity Systems · 2017 to 2021 · UK streets, pilot in the UAE</div>
-    <p>Battery-powered magnetometer sensors installed in public roads. I wrote the sensor driver from the datasheet, recorded real cars to design the detection, and designed the system around power: units ran for about six years on one coin cell. Sealed sensors get new firmware without being opened: a magnet triggers a short update window, and a technician sends the firmware from a phone.</p>
+    <p>Battery-powered magnetometer sensors installed in public roads. I wrote the sensor driver from the datasheet, recorded real cars to design the detection, and designed the system around power: units ran for about six years on one coin cell. Sealed sensors in the road still get new firmware, without being opened.</p>
     <div class="tags"><span>nRF52, bare-metal C</span><span>BLE</span><span>Linux gateways</span><span>AWS IoT Core</span><span>ThingsBoard</span><span>TensorFlow</span></div>
   </div>
 
@@ -236,19 +287,110 @@
   <div class="card rv">
     <h3>Robot arm with vision-based control</h3>
     <div class="meta">M.Sc. thesis · Blida University · 2017</div>
-    <p>I rebuilt an old, undocumented 3-axis arm, measured its dynamics, modelled it, and added a camera so it could find and pick up a ball. Captain of a team with three podiums in a row at Eurobot Algeria, the national robotics competition.</p>
+    <p>I rebuilt an old, undocumented 3-axis arm, measured its dynamics, modelled it, and added a camera so it could find and pick up a ball. At Eurobot Algeria, the national robotics competition, I led the robots' control and code for a team with three podiums in a row.</p>
     <div class="tags"><span>Control</span><span>System identification</span><span>Camera calibration</span><span>MATLAB / Simulink</span></div>
   </div>
 </section>
 
 <section id="training">
   <h2>Training</h2>
-  <div class="card rv">
-    <h3>IoT engineering, taught on real hardware</h3>
-    <div class="meta">Instructor at Almikatro · 2026 to present · live online</div>
-    <p>I design and teach a professional IoT course on ESP32: system architecture, firmware, sensors (I2C, SPI, UART), Wi-Fi and TCP/IP, MQTT, HTTP APIs, ThingsBoard, dashboards, alerts and remote control. Each student finishes with a working device-to-cloud system. A LoRa module is in preparation.</p>
-    <p>I also give training and technical advice to companies and startups that build connected products.</p>
-    <div class="links"><a class="btn" href="https://almikatro.com">Course page at Almikatro</a></div>
+
+  <div class="t-lead rv">
+    <h3>From field experience to professional training</h3>
+    <p>Nine years of shipping connected products, turned into hands-on programs on <b>IoT systems</b> and <b>edge AI</b>. Every participant builds a system that works, on real hardware, and leaves with the rules engineers use in the field.</p>
+    <div class="t-chips"><span>Real hardware in every session</span><span>Field rules, not theory slides</span><span>From one sensor to a product a client can use</span></div>
+  </div>
+
+  <div class="card track rv">
+    <div class="track-head">
+      <div><h3>IoT systems</h3><div class="meta">From one sensor in the house to devices in the field and in the factory</div></div>
+      <span class="track-tag">Track 1</span>
+    </div>
+    <div class="road">
+      <b></b>
+      <div class="step">
+        <div class="lv">L1</div>
+        <small>Wi-Fi · in the house</small>
+        <h4>IoT engineering on ESP32</h4>
+        <p>Sensors, Wi-Fi and MQTT, live dashboards, alerts and remote control. Students build a smart irrigation system.</p>
+        <span class="st live">Available</span> <a class="more" href="https://almikatro.com/iot-engineering-course">Course page →</a>
+      </div>
+      <div class="step">
+        <div class="lv">L2</div>
+        <small>LoRa · in the field</small>
+        <h4>Long-range IoT: LoRa and ThingsBoard</h4>
+        <p>Radio settings by procedure, a gateway and protocol of your own, real LoRaWAN products, and a platform with maps, alarms and remote control.</p>
+        <span class="st soon">Starts Nov 2026</span> <a class="more" href="https://almikatro.com/courses/iot-systems-level-2">Course page →</a>
+      </div>
+      <div class="step">
+        <div class="lv">L3</div>
+        <small>Bluetooth LE · in the factory</small>
+        <h4>Indoor and industrial IoT</h4>
+        <p>Bluetooth LE sensors and tags, asset tracking inside buildings, a BLE gateway, machines on RS485/Modbus, and real-world security.</p>
+        <span class="st plan">Planned</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card track rv">
+    <div class="track-head">
+      <div><h3>Edge AI and vision</h3><div class="meta">AI that runs on the device itself: from a microcontroller to a robot</div></div>
+      <span class="track-tag">Track 2</span>
+    </div>
+    <div class="road">
+      <b></b>
+      <div class="step">
+        <div class="lv">L1</div>
+        <small>TinyML · on the ESP32</small>
+        <h4>Edge AI on a microcontroller</h4>
+        <p>Recognise objects with a camera, gestures with an accelerometer and sounds with a microphone. Collect the data, train the model, run it on the board.</p>
+        <span class="st soon">In preparation</span>
+      </div>
+      <div class="step">
+        <div class="lv">L2</div>
+        <small>Vision · on robots</small>
+        <h4>Computer vision for robotics</h4>
+        <p>Cameras and embedded AI that let a machine detect, locate and act: the vision loop behind modern robots, running at the edge.</p>
+        <span class="st plan">Planned</span>
+      </div>
+      <div class="step ghost">
+        <div class="lv">→</div>
+        <small>Next</small>
+        <h4>Robots that understand what they see</h4>
+        <p>Beyond detection: machines that connect vision and language to follow instructions and explain what they do.</p>
+        <span class="st next">Coming later</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="t-sub rv">For teams, academies and schools</h3>
+  <div class="formats">
+    <div class="card rv"><h4>Company workshops</h4><p>1 to 3 days, on site or online, built around your team's level and your products.</p></div>
+    <div class="card rv"><h4>Academies and training centres</h4><p>A ready, hands-on track for your learners, starting with a pilot group.</p></div>
+    <div class="card rv"><h4>Schools and universities</h4><p>Practical lab sessions and workshops, alongside your own courses.</p></div>
+  </div>
+  <p class="t-note rv">Programs can be delivered in French or English, online or on site.</p>
+  <p class="t-note rv">Building a connected product? I enjoy early technical conversations with startups and product teams: choosing the radio, shaping the architecture, finding the path from prototype to the field. Tell me about it below.</p>
+
+  <div class="card feature req rv" id="request">
+    <h3>Request a training</h3>
+    <p>Tell me who you are and what you need. You get a reply from me personally.</p>
+    <form id="reqf" class="req-grid" onsubmit="return false">
+      <label>Your name<input name="name" required autocomplete="name"></label>
+      <label>Organisation<input name="org" autocomplete="organization" placeholder="Optional"></label>
+      <label>You represent<select name="who">
+        <option>A company</option><option>An academy or training centre</option><option>A school or university</option><option>A startup or product team</option><option>Myself</option></select></label>
+      <label>Topic<select name="topic">
+        <option>IoT systems (Wi-Fi, LoRa, Bluetooth, platforms)</option><option>Edge AI and vision</option><option>A custom program</option><option>A conversation about my product</option></select></label>
+      <label>Format<select name="format"><option>On site</option><option>Online</option><option>Not sure yet</option></select></label>
+      <label>Group size<select name="size"><option>Not sure yet</option><option>1 to 5</option><option>6 to 15</option><option>16 to 30</option><option>More than 30</option></select></label>
+      <label class="full">Your need<textarea name="msg" rows="3" placeholder="Your team, your goal, your dates…"></textarea></label>
+      <div class="full req-btns">
+        <button class="btn primary" type="button" data-send="mail">Send by email</button>
+        <button class="btn" type="button" data-send="wa">Send on WhatsApp</button>
+        <small>Each button opens your own app with the message ready. Nothing is stored on this page.</small>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -282,6 +424,7 @@
   <p>Based in Algeria. Working remotely with UK teams since 2017.</p>
   <div class="links">
     <a class="btn primary" href="mailto:omar.morceli7@gmail.com">omar.morceli7@gmail.com</a>
+    <a class="btn" href="#request">Request a training</a>
     <a class="btn" href="https://www.linkedin.com/in/omar-morceli">LinkedIn</a>
     <a class="btn" href="https://github.com/OmarMorceli">GitHub</a>
   </div>
@@ -357,6 +500,28 @@
   readColors(); size(); draw();
   if (!reduce) { raf = requestAnimationFrame(step); document.addEventListener('visibilitychange', function () { cancelAnimationFrame(raf); if (!document.hidden) raf = requestAnimationFrame(step); }); }
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); draw(); }, 150); });
+})();
+</script>
+<script>
+// "Request a training": build the message, then open the visitor's own email or WhatsApp. Nothing is sent from this page.
+(function () {
+  var f = document.getElementById('reqf'); if (!f) return;
+  function v(n) { return (f.elements[n].value || '').trim(); }
+  function text() {
+    return 'Hello Omar,\n\nI would like to discuss a training.\n\n' +
+      'Name: ' + v('name') + '\nOrganisation: ' + (v('org') || '-') + '\nI represent: ' + v('who') +
+      '\nTopic: ' + v('topic') + '\nFormat: ' + v('format') + '\nGroup size: ' + v('size') +
+      '\n\nMy need:\n' + (v('msg') || '-') + '\n';
+  }
+  [].forEach.call(f.querySelectorAll('[data-send]'), function (b) {
+    b.onclick = function () {
+      if (!v('name')) { f.elements.name.focus(); if (f.elements.name.reportValidity) f.elements.name.reportValidity(); return; }
+      var body = text(), org = v('org');
+      if (b.getAttribute('data-send') === 'mail')
+        location.href = 'mailto:omar.morceli7@gmail.com?subject=' + encodeURIComponent('Training request' + (org ? ' - ' + org : '')) + '&body=' + encodeURIComponent(body);
+      else window.open('https://wa.me/213674260217?text=' + encodeURIComponent(body), '_blank', 'noopener');
+    };
+  });
 })();
 </script>
 </body>
